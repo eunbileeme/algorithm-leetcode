@@ -1,5 +1,5 @@
 // 1. 기존 행렬의 넓이와 새 행렬의 넓이가 같지 않다면, 새 행렬을 리턴
-// 2. 행과 열에 대해 두 개의 별도 포인터를 유지하며, (기존 행렬) 먼저 열을 살펴보고 (열 == c) 경우 다음 행으로 이동하고 열 포인터를 다시 0으로 설정
+// 2. 행과 열에 대해 두 개의 포인터를 유지하며, (기존 행렬) 먼저 열을 살펴보고 (열 == c) 경우 다음 행으로 이동하고 열 포인터를 다시 0으로 설정
 
 class Solution {
     public int[][] matrixReshape(int[][] mat, int r, int c) {
@@ -21,12 +21,13 @@ class Solution {
             for (int j = 0; j < cols; j ++) {
                 // 4-1. idx에 따라 기존 행렬의 원소를 저장
                 output[output_rows][output_cols] = mat[i][j];
-                // 4-2. 열이 끝날 때마다, 다음 행으로 넘어가야하므로, 열을 1씩 증가 
+                // 4-2. 열을 1씩 증가 
                 output_cols++;
 
                 // 5. 열 idx == 기존 배열의 열
                 if (output_cols == c) {
                     output_cols = 0;
+                    // 5-1. 다음 행으로 진행
                     output_rows++;
                 }
             }
